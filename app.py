@@ -99,11 +99,6 @@ def download_mp3():
 
 
 # QR Code Generator
-@app.route('/qr-scanner')
-def qr_scanner():
-    return render_template('qr_scanner.html')
-
-
 @app.route('/generate-qr', methods=['POST'])
 def generate_qr():
     data = request.form['data']
@@ -117,11 +112,6 @@ def generate_qr():
 
 
 # PDF Merger
-@app.route('/pdf-merger')
-def pdf_merger():
-    return render_template('pdf_merger.html')
-
-
 @app.route('/merge-pdfs', methods=['POST'])
 def merge_pdfs():
     pdf_files = request.files.getlist('pdfs')
@@ -138,11 +128,6 @@ def merge_pdfs():
 
 
 # Image Compressor
-@app.route('/image-compressor')
-def image_compressor():
-    return render_template('image_compressor.html')
-
-
 @app.route('/compress-image', methods=['POST'])
 def compress_image():
     image = Image.open(request.files['image'])
@@ -156,11 +141,6 @@ def compress_image():
 
 
 # Barcode Generator
-@app.route('/barcode-generator')
-def barcode_generator():
-    return render_template('barcode_generator.html')
-
-# Fixing the issue with barcode text size calculation using getbbox()
 def get_text_size(font, text):
     bbox = font.getbbox(text)
     text_width = bbox[2] - bbox[0]
@@ -198,11 +178,6 @@ def generate_barcode():
 
 
 # Instagram Reel Downloader
-@app.route('/instagram-downloader')
-def instagram_downloader():
-    return render_template('instagram_downloader.html')
-
-
 @app.route('/download-instagram', methods=['POST'])
 def download_instagram():
     url = request.form['url']
@@ -226,11 +201,6 @@ def download_instagram():
 
 
 # Images to PDF Converter
-@app.route('/images-to-pdf')
-def images_to_pdf():
-    return render_template('images_to_pdf.html')
-
-
 @app.route('/convert-images-to-pdf', methods=['POST'])
 def convert_images_to_pdf():
     image_files = request.files.getlist('images')
@@ -241,13 +211,6 @@ def convert_images_to_pdf():
     pdf_io.seek(0)
 
     return send_file(pdf_io, as_attachment=True, download_name='images_to_pdf.pdf', mimetype='application/pdf')
-
-
-# # Font size fix: Update text size calculation using getbbox()
-# def get_text_size(font, text):
-#     bbox = font.getbbox(text)
-#     text_width, text_height = bbox[2] - bbox[0], bbox[3] - bbox[1]
-#     return text_width, text_height
 
 
 if __name__ == '__main__':
