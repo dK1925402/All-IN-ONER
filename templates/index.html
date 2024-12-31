@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All-in-One Flask Utility</title>
+    
+
+<!-- <style></style> -->
+
+
+<!-- <link rel="stylesheet" href="style.css"> -->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+
+
+</head>
+<body>
+
+    <div class="upperdiv">
+    <header>
+
+        <div class="headdiv">
+
+        
+        <img   id="headerimg" src=  "{{ url_for('static', filename='images/all.png') }}"  alt="">
+    <h1  id="h1head">ALL-IN-ONER</h1>
+
+</div>
+
+<p>........ One Stop for All Your Downloads and Digital Tools! ........</p>
+</header>
+
+<div class="navclass">
+    <nav>
+
+
+        <div class="navbox"    id="imgtag1" >
+
+            <img src="{{ url_for('static', filename='images/youtube.png') }}" class="imgclass">
+            <a class="link" href="#youtube-download">YouTube Video Downloader</a>
+    </div>
+
+
+
+    <div class="navbox"    id="imgtag2" >
+
+        <img src="{{ url_for('static', filename='images/qr-code.png') }}"   class="imgclass">
+        <a class="link" href="#qr-code-generator">QR-CODE Generator</a>
+</div>
+
+
+        
+     <div class="navbox"    id="imgtag3" >
+
+        <img src= "{{ url_for('static', filename='images/pdf.png') }}"   class="imgclass">
+        <a class="link" href="#pdf-merger">PDF Merger</a>
+</div>
+
+
+        <div class="navbox"   id="imgtag4"  >
+
+
+            <img src= "{{ url_for('static', filename='images/gallery.png') }}"  class="imgclass">
+        <a class="link" href="#image-compressor">Image Compressor</a>
+</div>
+
+
+        <div class="navbox"   id="imgtag5"  >
+
+
+            <img src= "{{ url_for('static', filename='images/barcode-product.png') }}"    class="imgclass">
+        <a class="link" href="#barcode-generator">Barcode Generator</a>
+</div>
+
+
+        <div class="navbox"   id="imgtag6"  >
+
+
+            <img src= "{{ url_for('static', filename='images/instagram.png') }}"    class="imgclass">
+        <a class="link" href="#instagram-downloader">Instagram Reel Downloader</a>
+</div>
+
+
+
+        <div class="navbox"   id="imgtag7"  >
+
+
+            <img src= "{{ url_for('static', filename='images/pdf-file.png') }}"    class="imgclass">
+        <a class="link" href="#images-to-pdf">Images to PDF Converter</a>
+</div>
+
+
+        <div class="navbox"   id="imgtag8"  >
+
+        
+            <img src= "{{ url_for('static', filename='images/download.png') }}"     class="imgclass">
+        <a class="link" href="#yt-mp3">YouTube to MP3</a>
+    </div>
+
+
+    <div class="navbox"   id="imgtag9"  >
+
+
+        <img src="{{ url_for('static', filename='images/menu.png') }}"    class="imgclass">
+    <a class="link" href="#yt-mp3">Others</a>
+</div>
+
+
+</nav>
+
+
+
+
+</div>
+
+</div>
+
+
+    <div class="main">
+
+    <!-- YouTube Video Downloader -->
+    <section id="youtube-download"  class="box">  
+
+        <div class="in">
+
+        <h2>YouTube Video Downloader</h2>
+        <form action="/download" method="POST">
+            <!-- <label for="yt-url"></label> -->
+            <input type="text" id="yt-url" name="url" placeholder="Enter YouTube Video URL"       class="inputbar" required>
+            <button type="submit">Download Video</button>
+        </form>
+  </div>
+
+</section>
+
+    <!-- QR Code Generator -->
+    <section id="qr-code-generator"  class="box">  
+
+        <div class="in">
+
+        <h2>QR Code Generator</h2>
+        <form action="/generate-qr" method="POST">
+            <!-- <label for="qr-data">:</label> -->
+            <input type="text" id="qr-data" name="data" placeholder="Enter Text or Link"       class="inputbar"       required>
+            <button type="submit">Generate QR Code</button>
+        </form>
+   </div>
+
+</section>
+
+    <!-- PDF Merger -->
+    <section id="pdf-merger"  class="box">  
+
+        <div class="in">
+
+        <h2>PDF Merger</h2>
+        <form action="/merge-pdfs" method="POST" enctype="multipart/form-data">
+           
+            <div class="under">
+            <label for="pdf-files">Select PDFs to Merge:</label>
+            <input type="file" id="pdf-files" name="pdfs" placeholder=""       class="inputbar" multiple required>
+        </div>
+
+
+            <button type="submit">Merge PDFs</button>
+        </form>
+   </div>
+
+</section>
+
+    <!-- Image Compressor -->
+    <section id="image-compressor"  class="box">  
+
+        <div class="in">
+
+        <h2>Image Compressor</h2>
+        <form action="/compress-image" method="POST" enctype="multipart/form-data">
+
+<div class="under">
+
+            <label for="image-file">Select Image to Compress:</label>
+            <input type="file" id="image-file" name="image" placeholder=""       class="inputbar" required>
+
+        </div>
+
+            <button type="submit">Compress Image</button>
+        </form>
+ </div>
+
+</section>
+
+    <!-- Barcode Generator -->
+    <section id="barcode-generator"  class="box">  
+
+        <div class="in">
+
+        <h2>Barcode Generator</h2>
+        <form action="/generate-barcode" method="POST">
+            <!-- <label for="barcode-code">Enter Code:</label> -->
+            <input type="text" id="barcode-code" name="code" placeholder="Enter Code"       class="inputbar" required>
+           
+           <div class="under">
+           
+
+            <label for="barcode-format">Select Format:</label>
+            <select id="barcode-format" name="format">
+                <option value="ean13">EAN-13</option>
+                <option value="ean8">EAN-8</option>
+                <option value="upca">UPC-A</option>
+            </select>
+
+        </div>
+
+            <button type="submit">Generate Barcode</button>
+        </form>
+  </div>
+
+</section>
+
+    <!-- Instagram Reel Downloader -->
+    <section id="instagram-downloader"  class="box">  
+
+        <div class="in">
+
+        <h2>Instagram Reel Downloader</h2>
+        <form action="/download-instagram" method="POST">
+            <!-- <label for="insta-url">:</label> -->
+            <input type="text" id="insta-url" name="url" placeholder="Enter Instagram Reel URL"       class="inputbar" required>
+            <button type="submit">Download Reel</button>
+        </form>
+  </div>
+
+</section>
+
+    <!-- Images to PDF Converter -->
+    <section id="images-to-pdf"  class="box">  
+
+        <div class="in">
+
+        <h2>Images to PDF Converter</h2>
+        <form action="/convert-images-to-pdf" method="POST" enctype="multipart/form-data">
+            
+            <div class="under">
+            <label for="image-files">Select Images:</label>
+            <input type="file" id="image-files" name="images" placeholder=""       class="inputbar" multiple required>
+           </div>
+           
+            <button type="submit">Convert to PDF</button>
+        </form>
+    </div>
+
+</section>
+
+    <!-- YouTube to MP3 Downloader -->
+    <section id="yt-mp3"  class="box">  
+
+        <div class="in">
+
+        <h2>YouTube to MP3 Downloader</h2>
+        <form action="/download-mp3" method="POST">
+            <!-- <label for="yt-mp3-url">Enter YouTube Video URL:</label> -->
+            <input type="text" id="yt-mp3-url" name="url" placeholder="Enter YouTube Video URL"       class="inputbar" required>
+            <button type="submit">Download as MP3</button>
+        </form>
+
+       
+   </div>
+
+</section>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+Flask
+yt-dlp
+q
+# instaloader==4.11.3rcode
+PyPDF2
+Pillow
+python-barcode
+instaloader
+
+
+
+# install command 
+# pip install -r requirements.txt
+# pip install --upgrade -r requirements.txt
+
+
+
